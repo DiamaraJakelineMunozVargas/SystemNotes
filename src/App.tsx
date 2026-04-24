@@ -1,12 +1,14 @@
 
-import Inicio from './pages/inicio';
-import Navbar from './componentes/Navbar';
+import Inicio from './pages/Inicio';
+import NavbarCompo from './componentes/NavbarCompo';
 import './App.css'
+
 
 const App = () => {
   return (
     <div >
-      <Navbar/>
+      <NavbarCompo/> 
+   
      <Inicio/>
     </div>
   )

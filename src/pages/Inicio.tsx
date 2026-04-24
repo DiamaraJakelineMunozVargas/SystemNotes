@@ -1,10 +1,13 @@
-import Tiptap from "../componentes/Tiptap";
+import ModalComponente from "../componentes/ModalComponente";
+
+
+
 
 const Inicio = () => {
   return (
     <div >
-      
-      <Tiptap />
+      <ModalComponente/>
+     
     </div>
   )
 }
