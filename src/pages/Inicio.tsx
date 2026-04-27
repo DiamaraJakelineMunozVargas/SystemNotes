@@ -3,10 +3,10 @@ import ModalComponente from "../componentes/ModalComponente";
 
 
 
-const Inicio = () => {
+const Inicio = ({data}) => {
   return (
     <div >
-      <ModalComponente/>
+      <ModalComponente data={data}/>
      
     </div>
   )

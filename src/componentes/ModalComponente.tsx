@@ -1,14 +1,15 @@
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import Tiptap from './Tiptap';
+
+import ContenidoModalTipTap from './ContenidoModalTipTap';
+import DraggableModal from './DraggableModal';
 
 
 
 
-function ModalComponente() {
-
-
+function ModalComponente({data}) {
+console.log(data)
   const [disabled, setDisabled] = useState(true); // para cambiar el comportamiento del mouse al momento de mover el modal
   const [show, setShow] = useState(false);  //para mostrar el modal 
   const close = () => setShow(false);  // para cerrarlo 
@@ -20,9 +21,9 @@ function ModalComponente() {
         Modal 
       </Button>
     
-  <Modal show={show} onHide={close} >
+  <Modal show={show} onHide={close} dialogAs={DraggableModal}>
      
-            <Modal.Header  
+            <Modal.Header 
             closeButton
               style= {{ width: '100%', cursor: 'move' }}
             onMouseOver={() => { if (disabled) setDisabled(false); }}
@@ -30,10 +31,9 @@ function ModalComponente() {
                         <Modal.Title>Modal heading</Modal.Title>
                       
             </Modal.Header>
-    
        
         <Modal.Body>
-            <Tiptap/> 
+            <ContenidoModalTipTap data={data}/> 
          </Modal.Body>
         <Modal.Footer>
             <Button variant="secondary" onClick={close}>
@@ -44,15 +44,8 @@ function ModalComponente() {
                Guardar Cambios
             </Button>
         </Modal.Footer>
- 
-          
-        
-        
+      
     </Modal>
-   
-  
-     
-     
     </>
   );
 }

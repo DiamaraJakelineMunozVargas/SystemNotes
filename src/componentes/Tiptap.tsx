@@ -3,13 +3,15 @@ import { FloatingMenu, BubbleMenu } from '@tiptap/react/menus'
 import StarterKit from '@tiptap/starter-kit'
 import { useMemo } from 'react'
 
-const Tiptap = () => {
-  const editor = useEditor({
-    extensions: [StarterKit], // define your extension array
-    content: '<p>Hello World!</p>', // initial content
-  })
 
- 
+
+
+const Tiptap = ({content}) => {
+  const editor = useEditor({
+    extensions: [StarterKit], 
+    content: content, 
+    editable: false,  // para que solo sea visual el texto 
+  }) 
   const providerValue = useMemo(() => ({ editor }), [editor])
 
   return (

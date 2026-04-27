@@ -4,6 +4,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 
 function NavbarCompo(){
+ 
    return ( 
    <Navbar expand="lg" className="navbar bg-dark navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
    <Container>
