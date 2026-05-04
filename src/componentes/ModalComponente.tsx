@@ -5,6 +5,7 @@ import Modal from 'react-bootstrap/Modal';
 import ContenidoModalTipTap from './ContenidoModalTipTap';
 import DraggableModal from './DraggableModal';
 
+import '../styles/estilosmodal.css';
 
 
 
@@ -17,11 +18,11 @@ console.log(data)
 
   return (
     <>
-      <Button variant="success" onClick={open}>
-        Modal 
+      <Button variant="success" onClick={open} className='ModalButton'>
+        Mostrar 
       </Button>
     
-  <Modal show={show} onHide={close} dialogAs={DraggableModal}>
+  <Modal show={show} onHide={close} dialogAs={DraggableModal} >
      
             <Modal.Header 
             closeButton

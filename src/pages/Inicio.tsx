@@ -7,6 +7,7 @@ const Inicio = ({data}) => {
   return (
     <div >
       <Formulario></Formulario>
+    
       <ModalComponente data={data}/>
      
     </div>
