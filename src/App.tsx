@@ -8,20 +8,19 @@ import axios from "axios"
 
 const App = () => {
   const [infoPat, setinfoPat] = useState<{ready:boolean,data:{
-    Nombre: string,
-    Edad: number,
-    Estudio: string,
-    FechaEstudio: string,
-    Medico: string,
+    name: string,
+    title: string,
+    content: string,
+    date: Date,
+    
   }|null}>({ready:false,data:null})
   console.log(infoPat)
   useEffect(() => {
     (async () => {
   try {
-    const res = await axios.get("data/nota.json");
+    const res = await axios.get("http://localhost:3000/notas");
     
-    // En Axios, los datos ya vienen en la propiedad .data
-    // No es una función como en la Fetch API (res.json())
+  
     const data = res.data; 
     
     setinfoPat({ready:true,data})

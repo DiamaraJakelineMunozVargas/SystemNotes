@@ -1,16 +1,23 @@
 import mongoose from "mongoose";
-import { type } from "os";
+
 
 // schema o esquema 
-
 const noteSchema = new mongoose.Schema({
+    name:{
+        type: String,
+        required: true
+    },
     title:{
         type: String,
         required: true
     },
+    date:{
+        type: Date,
+        default: Date.now // para que me salga la fecha de hoy en automatico 
+    },
     content: {
         type: String,
-        required: true
+        default: ""
     }
 })
 const Note = new mongoose.model('Note', noteSchema)

@@ -6,8 +6,9 @@ POST http://localhost:3000/notas
 Content-Type: application/json
 
 {
-    "title": "Titulo de mi nota",
-    "content": "Texto de mi nota"
+    "name": "nombre",
+    "title": "Titulo de mi nota"
+   
 }
 ###
 
@@ -18,6 +19,7 @@ PUT  http://localhost:3000/notas/69fb95674078c6fcab46c44b
 Content-Type: application/json
 
 {
-    "title": "Titulo de mi nota actualizado",
-    "content": "Texto de mi nota actualizado"
+    "name": "nombre",
+    "title": "Titulo de mi nota"
+   
 }

@@ -1,13 +1,13 @@
 import ModalComponente from "../componentes/ModalComponente";
-import Formulario from "../componentes/Formulario";
+import TablaInicio from "../componentes/TablaInicio";
 
 
 
 const Inicio = ({data}) => {
   return (
     <div >
-      <Formulario></Formulario>
-    
+      
+    <TablaInicio></TablaInicio>
       <ModalComponente data={data}/>
      
     </div>
