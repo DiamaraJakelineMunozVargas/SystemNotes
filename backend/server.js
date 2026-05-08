@@ -2,10 +2,14 @@ import express from 'express';
 import router from './routes/routesRoutes.js';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
+import cors from 'cors';
 dotenv.config()
 
 const app = express()
 
+app.use(cors({
+    origin:"http://localhost:5173"
+}))
 //Midleware 
 app.use(express.json()) //para recibir archivo json 
 app.use('/notas', router)

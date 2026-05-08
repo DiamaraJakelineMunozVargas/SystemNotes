@@ -1,10 +1,10 @@
 
-import Inicio from './pages/Inicio';
-import NavbarCompo from './componentes/NavbarCompo';
+import Inicio from './pages/HomePage';
+import CrearNote from './pages/CreateNote';
 import './App.css'
 import { useEffect, useState } from 'react';
 import axios from "axios"
-
+import { Routes, Route } from 'react-router-dom';
 
 const App = () => {
   const [infoPat, setinfoPat] = useState<{ready:boolean,data:{
@@ -31,10 +31,14 @@ const App = () => {
   }, [])
   if(!infoPat.ready)(<div>Cargando.......</div>)
   return (
-    <div >
-      <NavbarCompo /> 
+    <div className='w-full max-w-[1540px] mx-auto ' >
+      <Routes>
+        <Route path='/' element={ <Inicio data={infoPat.data}/>}></Route>
+        <Route path='/createNote' element={ <CrearNote />}></Route>
+      </Routes>
+    
    
-     <Inicio data={infoPat.data}/>
+    
     </div>
   )
 }

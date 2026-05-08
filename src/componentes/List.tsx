@@ -1,0 +1,44 @@
+const List = () => {
+  // {data}
+  return (
+    <div className="bg-base-100 w-full ">
+      <ul className="list bg-base-100 rounded-box shadow-md">
+        <li className="p-4  font-bold lg: text-2xl">Lista de Reportes</li>
+
+        {/* {data.map((note) => ( */}
+        <li
+          // key={note._id}
+          className="list-row hover:bg-base-200 transition cursor-pointer"
+        >
+          <div className="avatar">
+            <div className="w-15 rounded-full">
+              <img src="https://i.pravatar.cc/100" />
+            </div>
+          </div>
+
+          <div>
+            <div className="font-semibold text-accent lg: text-2xl">
+              Veronica Mercado Aguilar
+              {/* {note.name} */}
+            </div>
+
+            <div className="text-lg">
+              Titulo
+              {/* {note.title} */}
+            </div>
+
+           
+          </div>
+           <div className=" flex justify-between items-end text-xs opacity-60 p-2 ">
+              fecha
+              {/* {new Date(note.date).toLocaleDateString()} */}
+            </div>
+
+          {/* <button className="btn btn-primary btn-sm">Abrir</button> */}
+        </li>
+        {/* ))} */}
+      </ul>
+    </div>
+  );
+};
+export default List;
