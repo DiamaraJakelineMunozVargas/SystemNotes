@@ -1,21 +1,18 @@
-import Draggable from "react-draggable"
-import ModalDialog from "react-bootstrap/ModalDialog"
-import { useRef } from "react"
+import Draggable from "react-draggable";
+import { useRef } from "react";
 
-function DraggableModal(props) {
-  const nodeRef = useRef(null)
+// Agregamos handle a las Props
+const DraggableModal = ({ children, handle }: { children: React.ReactNode, handle?: string }) => {
+  const nodeRef = useRef(null);
 
   return (
-    <Draggable
-      nodeRef={nodeRef}
-      handle=".modal-header"
-      cancel=".btn-close"
-    >
-      <div ref={nodeRef}>
-        <ModalDialog {...props} />
+    // Pasamos el handle al Draggable
+    <Draggable nodeRef={nodeRef} handle={handle}>
+      <div ref={nodeRef} className="draggable-container">
+        {children}
       </div>
     </Draggable>
-  )
-}
+  );
+};
 
-export default DraggableModal
+export default DraggableModal;

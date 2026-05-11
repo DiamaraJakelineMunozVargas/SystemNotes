@@ -1,0 +1,67 @@
+/* El "fondo" donde descansa la hoja */
+.reporte-container {
+  background-color: #e5e7eb; /* Gris claro tipo escritorio */
+  padding: 40px 20px;
+  display: flex;
+  justify-content: center;
+  min-height: 500px;
+}
+
+/* La hoja de papel */
+.ProseMirror {
+  background-color: white;
+  width: 100%;
+  max-width: 700px;
+  min-height: 800px;
+  padding: 80px !important; /* Margen tipo Word */
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  border: 1px solid #d1d5db;
+  font-family: 'Times New Roman', Times, serif; /* O Arial */
+  color: #1f2937;
+  line-height: 1.6;
+  outline: none !important;
+}
+
+/* Estilos internos del reporte */
+.reporte-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.reporte-header h1 {
+  font-size: 24px;
+  font-weight: bold;
+  text-decoration: underline;
+  margin-bottom: 5px;
+}
+
+.fecha-reporte {
+  font-size: 14px;
+  color: #4b5563;
+}
+
+.reporte-seccion {
+  margin: 20px 0;
+  font-size: 16px;
+}
+
+.reporte-contenido h2 {
+  font-size: 18px;
+  border-bottom: 1px solid #e5e7eb;
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+.texto-principal {
+  text-align: justify;
+  white-space: pre-wrap; /* Respeta los saltos de línea */
+}
+
+.reporte-footer {
+  margin-top: 100px;
+  text-align: center;
+}
+
+.firma {
+  display: inline-block;
+}

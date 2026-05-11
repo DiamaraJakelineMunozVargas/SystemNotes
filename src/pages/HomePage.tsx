@@ -1,28 +1,21 @@
-import ModalComponente from "../componentes/ModalComponente";
+import type { Note } from "../types/note";
 import List from "../componentes/List";
-import { useEffect, useState } from "react";
-import axios from "axios";
 
-const Inicio = ({ data }) => {
-  const [notes, setNotes] = useState([]);
-  const [loading, setLoading] = useState(true);
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get("http://localhost:3000/notas");
-        setNotes(response.data);
-        setLoading(false);
-        console.log(response);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    fetchData()
-  }, []);
+type Props = {
+  data: Note[] | null;
+  setSelectedNote: React.Dispatch<
+    React.SetStateAction<Note | null>
+  >;
+};
+const Inicio = ({ data, setSelectedNote }: Props) => {
+  if (!data) return <span>No hay datos</span>;
   return (
     <div className="grid grid-cols- [repeat(auto-fit, _minmax(280px, -1fr))] gap-4 mt-16 xl:grid-cols-[repeat(auto-fit, _minmax(350px, -1fr))]">
-      <ModalComponente data={data} />
-      <List />
+      <h1 className="p-4  font-bold lg: text-2xl">Lista de Reportes</h1>
+    
+   
+        <List data={data} setSelectedNote={setSelectedNote}></List>
+    
     </div>
   );
 };
