@@ -12,10 +12,10 @@ const Inicio = ({ data, setSelectedNote }: Props) => {
   return (
     <div className="grid grid-cols- [repeat(auto-fit, _minmax(280px, -1fr))] gap-4 mt-16 xl:grid-cols-[repeat(auto-fit, _minmax(350px, -1fr))]">
       <h1 className="p-4  font-bold lg: text-2xl">Lista de Reportes</h1>
-    
-   
-        <List data={data} setSelectedNote={setSelectedNote}></List>
-    
+
+
+      <List data={data} setSelectedNote={setSelectedNote}></List>
+
     </div>
   );
 };

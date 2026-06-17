@@ -4,6 +4,7 @@ const CreateNote = () => {
   return (
     <div>
       <NoteForm></NoteForm>
+      {/* <EditorRegex></EditorRegex> */}
     </div>
   )
 }
