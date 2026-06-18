@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/toolbar.css";
+import "./styles/toolbar.css";
 import {
   Undo2,
   Redo2,

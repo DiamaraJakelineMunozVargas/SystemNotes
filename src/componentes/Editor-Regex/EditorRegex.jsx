@@ -1,5 +1,5 @@
 import TextAlign from "@tiptap/extension-text-align";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useEditor } from "@tiptap/react";
 import Wordtoolbar from "./Wordtoolbar";
 import { Color } from "@tiptap/extension-text-style";
@@ -7,17 +7,18 @@ import StarterKit from "@tiptap/starter-kit";
 import { TextStyle } from "@tiptap/extension-text-style";
 import { FontFamily } from "@tiptap/extension-font-family";
 import ResizeImage from "tiptap-extension-resize-image";
-import FontSize from "../extensions/FontSize";
-import { UnderlineStyle } from "../extensions/Underline";
+import FontSize from "./extensions/FontSize";
+import { UnderlineStyle } from "./extensions/Underline";
 import Highlight from "@tiptap/extension-highlight";
 import Subscript from "@tiptap/extension-subscript";
 import Superscript from "@tiptap/extension-superscript";
 import DocumentEditor from "./DocumentEditor";
 
-const EditorRegex = ({ onSave, variables = [], initialContent = "", onChange }) => {
+
+const EditorRegex = ({ onSave, onPrint, variables = [], initialContent = "", onChange }) => {
 
   const [activeEditor, setActiveEditor] = useState(null);
-  const [textoHtml, setTextoHtml] = useState("");
+  const [textoHtml, setTextoHtml] = useState(initialContent);
 
 
 
@@ -36,8 +37,9 @@ const EditorRegex = ({ onSave, variables = [], initialContent = "", onChange }) 
       }),
       Subscript,
       Superscript,
+
     ],
-    content: "",
+    content: initialContent,
     onUpdate: ({ editor }) => {
 
       const html = editor.getHTML();
@@ -101,6 +103,13 @@ const EditorRegex = ({ onSave, variables = [], initialContent = "", onChange }) 
   const handleSave = () => {
     onSave?.(textoHtml);
   };
+
+  useEffect(() => {
+    if (editorTemplate && initialContent) {
+      editorTemplate.commands.setContent(initialContent);
+    }
+  }, [editorTemplate, initialContent]);
+
   return (
     <div className="min-h-screen bg-gray-100">
 
@@ -109,7 +118,7 @@ const EditorRegex = ({ onSave, variables = [], initialContent = "", onChange }) 
         <Wordtoolbar
           editor={activeEditor || editorTemplate}
           handleSave={handleSave}
-          handlePrint={() => window.print()}
+          handlePrint={onPrint}
           variables={variables}
         />
       </div>

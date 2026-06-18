@@ -1,4 +1,3 @@
-
 const InsertVariableSelect = ({ editor, variables = [] }) => {
   return (
     <select

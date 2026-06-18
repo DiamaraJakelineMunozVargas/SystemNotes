@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import type { Note } from "../types/note";
-import Tiptap from "./Tiptap";
+
 
 type Props = {
   selectedNote: Note | null;
@@ -34,7 +34,7 @@ function ContenidoModalTipTap({ selectedNote, onUpdate }: Props) {
         <h1 className="text-2xl font-bold underline">REPORTE DE NOTA</h1>
         <p className="text-sm opacity-60">Fecha de emisión: {fechaFormateada}</p>
       </div>
-      
+
       <hr className="mb-6" />
 
       <div className="reporte-seccion mb-6 space-y-2">
@@ -45,11 +45,7 @@ function ContenidoModalTipTap({ selectedNote, onUpdate }: Props) {
       {/* --- CAMPO EDITABLE (Aquí el usuario escribe directamente) --- */}
       <div className="reporte-contenido border-2 border-dashed border-base-300 p-4 rounded-lg hover:border-primary transition-colors">
         <h2 className="font-bold mb-2 text-accent">Contenido:</h2>
-        <Tiptap 
-          content={selectedNote.content} 
-          editable={true} 
-          onChange={setCurrentContent} 
-        />
+
       </div>
 
       {/* --- PIE DE PÁGINA FIJO --- */}
@@ -63,8 +59,8 @@ function ContenidoModalTipTap({ selectedNote, onUpdate }: Props) {
 
       {/* --- BOTÓN DE ACCIÓN --- */}
       <div className="mt-8 flex justify-center">
-        <button 
-          className="btn btn-primary btn-wide font-bold" 
+        <button
+          className="btn btn-primary btn-wide font-bold"
           onClick={handleSave}
         >
           Guardar Cambios Actualizados

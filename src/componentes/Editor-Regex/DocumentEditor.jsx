@@ -1,4 +1,5 @@
 import Tiptap from "./Tiptap";
+import "./styles/documento.css";
 
 const DocumentEditor = ({
 

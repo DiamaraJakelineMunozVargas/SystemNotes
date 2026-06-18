@@ -6,59 +6,66 @@ import axios from "axios"
 import { Routes, Route } from 'react-router-dom';
 import NavbarCompo from './componentes/NavbarCompo';
 const apiurl = import.meta.env.VITE_API_URL;
-import type {Note} from "./types/note";
+import type { Note } from "./types/note";
 
 
 
 const App = () => {
   const [infoPat, setinfoPat] = useState<{ ready: boolean; data: Note[] | null }>({ ready: false, data: null });
- const [selectedNote, setSelectedNote] = useState<Note | null>(null);
+  const [selectedNote, setSelectedNote] = useState<Note | null>(null);
 
- console.log("Nota seleccionada actualmente:", selectedNote);
+  console.log("Nota seleccionada actualmente:", selectedNote);
   useEffect(() => {
     (async () => {
       try {
-        const res = await axios.get(`${apiurl}/notas`);
-        const data = res.data;
-        setinfoPat({ ready: true, data })
+        const res = await fetch("/public/data/nota.json");
+        const data = await res.json();
+
+        console.log(data);
+
+        setinfoPat({
+          ready: true,
+          data: data.usuarios,
+        });
+
       } catch (error) {
-        console.error("Error al obtener los datos:", error);
+        console.error(error);
       }
     })();
-  }, [])
+  }, []);
 
-const handleUpdateNote = async (id: string, updatedData: Partial<Note>) => {
-  try {
-    const res = await axios.put(`${apiurl}/notas/${id}`, updatedData);
-    
-    
-    setinfoPat(prev => ({
-      ...prev,
-      data: prev.data ? prev.data.map(n => n._id === id ? res.data : n) : null
-    }));
-    
- 
-    setSelectedNote(res.data);
-    alert("Nota actualizada con éxito");
-  } catch (error) {
-    console.error("Error al actualizar:", error);
-  }
-};
+  const handleUpdateNote = async (id: string, updatedData: Partial<Note>) => {
+    try {
+      const res = await axios.put(`${apiurl}/notas/${id}`, updatedData);
+
+
+      setinfoPat(prev => ({
+        ...prev,
+        data: prev.data ? prev.data.map(n => n._id === id ? res.data : n) : null
+      }));
+
+
+      setSelectedNote(res.data);
+      alert("Nota actualizada con éxito");
+    } catch (error) {
+      console.error("Error al actualizar:", error);
+    }
+  };
   if (!infoPat.ready) return <div>Cargando.......</div>;
 
   return (
     <>
-   
-    <NavbarCompo selectedNote={selectedNote} onUpdate={handleUpdateNote} />
-    <div className='w-full max-w-[1540px] mx-auto'>
- 
-      <Routes>
-         
-        <Route path='/' element={<Inicio data={infoPat.data} setSelectedNote={setSelectedNote} />} />
-        <Route path='/createNote' element={<CrearNote />} />
-      </Routes>
-    </div>
-     </>
+
+      <NavbarCompo selectedNote={selectedNote} onUpdate={handleUpdateNote} />
+      <div className='w-full max-w-[1540px] mx-auto'>
+
+        <Routes>
+
+          <Route path='/' element={<Inicio data={infoPat.data} setSelectedNote={setSelectedNote} />} />
+          <Route path='/createNote' element={<CrearNote />} />
+        </Routes>
+      </div>
+    </>
   )
 }
 
