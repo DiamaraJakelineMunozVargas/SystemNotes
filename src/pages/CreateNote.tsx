@@ -6,7 +6,7 @@ const CreateNote = () => {
   const variables = [
     {
       label: "Nombre",
-      value: "{{usuarios.name}}"
+      value: "{{usuarios.nombre}}"
     },
     {
       label: "Email",
